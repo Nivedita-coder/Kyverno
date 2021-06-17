@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: openebs-privileged
+  annotations:
+    seccomp.security.alpha.kubernetes.io/allowedProfileNames: '*'
+spec:
+  privileged: true //done
+  allowPrivilegeEscalation: true //done
+  allowedCapabilities: //done
+  - '*'
+  volumes: //done
+  - '*'
+  hostNetwork: true //done
+  hostPorts: //done
+  - min: 0
+    max: 65535
+  hostIPC: true  //done
+  hostPID: true  //done
+  runAsUser:
+    rule: 'RunAsAny'
+  seLinux:
+    rule: 'RunAsAny' //done
+  supplementalGroups:
+    rule: 'RunAsAny'
+  fsGroup:
+    rule: 'RunAsAny'
